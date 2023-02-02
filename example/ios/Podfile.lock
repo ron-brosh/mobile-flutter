@@ -1,29 +1,13 @@
 PODS:
-  - DatadogSDK (1.11.1)
   - Flutter (1.0.0)
   - iProov (10.1.0):
     - Starscream (~> 4.0)
     - SwiftProtobuf (~> 1.0)
-  - Jumio (4.4.0):
-    - Jumio/All (= 4.4.0)
-  - Jumio/All (4.4.0):
-    - Jumio/Datadog (= 4.4.0)
-    - Jumio/DeviceRisk (= 4.4.0)
-    - Jumio/DocFinder (= 4.4.0)
-    - Jumio/Jumio (= 4.4.0)
-    - Jumio/Liveness (= 4.4.0)
-  - Jumio/Datadog (4.4.0):
-    - DatadogSDK (= 1.11.1)
-  - Jumio/DeviceRisk (4.4.0)
-  - Jumio/DocFinder (4.4.0)
-  - Jumio/Jumio (4.4.0):
-    - PPpdf417 (= 8.0.0)
   - Jumio/Liveness (4.4.0):
     - iProov (= 10.1.0)
   - jumio_mobile_sdk_flutter (4.4.0):
     - Flutter
-    - Jumio (= 4.4.0)
-  - PPpdf417 (8.0.0)
+    - Jumio/Liveness (= 4.4.0)
   - Starscream (4.0.4)
   - SwiftProtobuf (1.20.3)
 
@@ -33,10 +17,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - DatadogSDK
     - iProov
     - Jumio
-    - PPpdf417
     - Starscream
     - SwiftProtobuf
 
@@ -47,12 +29,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/jumio_mobile_sdk_flutter/ios"
 
 SPEC CHECKSUMS:
-  DatadogSDK: ba0b08e235f938871691678efc4fb4032e7e27b2
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   iProov: 1baef733a065659d8f2b70f5d447a1d73f55d8d2
   Jumio: dcba7b38500570fcea598f5fec3d8a9ce10e897b
-  jumio_mobile_sdk_flutter: 49917a94ee18855fe1364b2abb5513d0237957d9
-  PPpdf417: aa644766d51a7e00b8d41c70868bba8b818f5215
+  jumio_mobile_sdk_flutter: 1a886e527d7440dc595fca2805ea1d08cfb282e6
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftProtobuf: b02b5075dcf60c9f5f403000b3b0c202a11b6ae1
 
