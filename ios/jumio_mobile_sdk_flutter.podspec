@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'Flutter'
+  s.dependency "Jumio/Jumio", "4.4.0"
   s.dependency "Jumio/Liveness", "4.4.0"
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
