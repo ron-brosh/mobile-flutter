@@ -20,8 +20,12 @@ Adjust your data center in the **credentials.dart** file, open a bash and run th
 ```
 cd MyProject
 flutter pub get
+cd ios && pod install
 ```
-Afterwards, run your project either with iOS simulator / Android emulator or on a real device.
+Afterwards, run your project on a real device with:
+```
+flutter run
+```
 
 Start a specific workflow with an `sdk.token` for authorization. 
 

@@ -2,7 +2,8 @@
 
 Official Jumio Mobile SDK plugin for Flutter
 
-This plugin is compatible with version 4.5.0 of the Jumio SDK. If you have questions, please reach out to your Account Manager or contact [Jumio Support](#support).
+This plugin is compatible with version 4.7.0 of the Jumio iOS SDK and 4.7.1 of the Jumio Android SDK.    
+If you have questions, please reach out to your Account Manager or contact [Jumio Support](#support).
 
 # Table of Contents
 - [Compatibility](#compatibility)
@@ -10,9 +11,11 @@ This plugin is compatible with version 4.5.0 of the Jumio SDK. If you have quest
 - [Integration](#integration)
  - [iOS](#ios)
  - [Android](#android)
+  - [Proguard](#proguard)
 - [Usage](#usage)
    - [Retrieving Information](#retrieving-information)
 - [Customization](#customization)
+- [Configuration](#configuration)
 - [Callbacks](#callbacks)
 - [Result Objects](#result-objects)
 - [FAQ](#faq)
@@ -24,7 +27,7 @@ This plugin is compatible with version 4.5.0 of the Jumio SDK. If you have quest
 - [Support](#support)
 
 ## Compatibility
-Compatibility has been tested with a Flutter version of 3.7.11 and Dart 2.19.6
+Compatibility has been tested with a Flutter version of 3.13.6 and Dart 3.1.3
 
 ## Setup
 Create Flutter project and add the Jumio Mobile SDK module to it.
@@ -40,7 +43,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  jumio_mobile_sdk_flutter: ^4.5.0
+  jumio_mobile_sdk_flutter: ^4.7.1
 ```
 
 And install the dependency:
@@ -48,6 +51,7 @@ And install the dependency:
 ```sh
 cd MyProject
 flutter pub get
+cd ios && pod install
 ```
 
 ## Integration
@@ -56,6 +60,9 @@ flutter pub get
 
 1. Add the "**NSCameraUsageDescription**"-key to your Info.plist file.    
 2. Your app's deployment target must be at least iOS 11.0
+
+#### Device Risk
+To include Jumio's Device Risk functionality, you need to add `pod Jumio/DeviceRisk` to your Podfile.
 
 ### Android
 __AndroidManifest__    
@@ -81,7 +88,7 @@ android {
 ```
 
 __Enable MultiDex__   
-Follow the Android developers guide: https://developer.android.com/studio/build/multidex.html
+Follow the Android developers guide [here](https://developer.android.com/studio/build/multidex.html)
 
 ```groovy
 android {
@@ -108,9 +115,9 @@ buildscript {
 }
 ```
 
-Modify the Gradle Wrapper version in android/gradle.properties.
+Modify the Gradle Wrapper version in `android/gradle.properties`.
 
-***Proguard Rules***    
+#### Proguard    
 For information on Android Proguard Rules concerning the Jumio SDK, please refer to our [Android guides](https://github.com/Jumio/mobile-sdk-android#proguard).
 
 To enable analytic feedback and internal diagnostics, please make sure to include the line
@@ -134,7 +141,7 @@ Jumio.init("AUTHORIZATION_TOKEN", "DATACENTER");
 ```
 
 Datacenter can either be **US**, **EU** or **SG**.      
-For more information about how to obtain an `AUTHORIZATION_TOKEN`, please refer to our [API Guide](https://github.com/Jumio/implementation-guides/blob/master/api-guide/api_guide.md).
+For more information about how to obtain an `AUTHORIZATION_TOKEN`, please refer to our [API Guide](https://jumio.github.io/kyx/integration-guide.html).
 
 3. As soon as the SDK is initialized, the SDK is started by the following call.
 
@@ -152,7 +159,7 @@ JumioSDK Android appearance can be customized by overriding the custom theme `Ap
 ### iOS
 JumioSDK iOS appearance can be customized to your respective needs. You can customize each color based on the device's set appearance, for either Dark mode or Light mode, or you can set a single color for both appearances. Customization is optional and not required.
 
-You can pass the following customization options at [`Jumio.start`](example/lib/main.dart#L82):
+You can pass the following customization options at [`Jumio.start`](example/lib/main.dart#L79):
 
 | Customization key                               |
 |:------------------------------------------------|
@@ -234,50 +241,53 @@ Jumio.start({
 });
 ```
 
+## Configuration
+For more information about how to set specific SDK parameters (callbackUrl, userReference, country, ...), please refer to our [API Guide](https://jumio.github.io/kyx/integration-guide.html#request-body).
+
 ## Callbacks
-In oder to get information about result fields, Retrieval API, Delete API, global settings and more, please read our [page with server related information](https://github.com/Jumio/implementation-guides/blob/master/api-guide/api_guide.md#callback).
+In oder to get information about result fields, Retrieval API, Delete API, global settings and more, please read our [page with server related information](https://jumio.github.io/kyx/integration-guide.html#callback).
 
 ## Result Objects
 JumioSDK will return `EventResult` in case of a successfully completed workflow and `EventError` in case of error. `EventError` includes an error code and an error message.
 
 ### EventResult
 
-| Parameter | Type | Max. length | Description  |
-|:-------------------|:-----------     |:-------------|:-----------------|
-| selectedCountry | String| 3| [ISO 3166-1 alpha-3](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code as provided or selected |
-| selectedDocumentType | String | 16| PASSPORT, DRIVER_LICENSE, IDENTITY_CARD or VISA |
-| idNumber | String | 100 | Identification number of the document |
-| personalNumber | String | 14| Personal number of the document|
-| issuingDate | Date | | Date of issue |
-| expiryDate | Date | | Date of expiry |
-| issuingCountry | String | 3 | Country of issue as ([ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)) country code |
-| lastName | String | 100 | Last name of the customer|
-| firstName | String | 100 | First name of the customer|
-| dob | Date | | Date of birth |
-| gender | String | 1| m, f or x |
-| originatingCountry | String | 3|Country of origin as ([ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)) country code |
-| addressLine | String | 64 | Street name    |
-| city | String | 64 | City |
-| subdivision | String | 3 | Last three characters of [ISO 3166-2:US](http://en.wikipedia.org/wiki/ISO_3166-2:US) state code    |
-| postCode | String | 15 | Postal code |
-| mrzData |  MRZ-DATA | | MRZ data, see table below |
-| optionalData1 | String | 50 | Optional field of MRZ line 1 |
-| optionalData2 | String | 50 | Optional field of MRZ line 2 |
-| placeOfBirth | String | 255 | Place of Birth |
+| Parameter            | Type     | Max. length | Description                                                                                                |
+|:---------------------|:---------|:------------|:-----------------------------------------------------------------------------------------------------------|
+| selectedCountry      | String   | 3           | [ISO 3166-1 alpha-3](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code as provided or selected |
+| selectedDocumentType | String   | 16          | PASSPORT, DRIVER_LICENSE, IDENTITY_CARD or VISA                                                            |
+| idNumber             | String   | 100         | Identification number of the document                                                                      |
+| personalNumber       | String   | 14          | Personal number of the document                                                                            |
+| issuingDate          | Date     |             | Date of issue                                                                                              |
+| expiryDate           | Date     |             | Date of expiry                                                                                             |
+| issuingCountry       | String   | 3           | Country of issue as ([ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)) country code  |
+| lastName             | String   | 100         | Last name of the customer                                                                                  |
+| firstName            | String   | 100         | First name of the customer                                                                                 |
+| dob                  | Date     |             | Date of birth                                                                                              |
+| gender               | String   | 1           | m, f or x                                                                                                  |
+| originatingCountry   | String   | 3           | Country of origin as ([ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)) country code |
+| addressLine          | String   | 64          | Street name                                                                                                |
+| city                 | String   | 64          | City                                                                                                       |
+| subdivision          | String   | 3           | Last three characters of [ISO 3166-2:US](http://en.wikipedia.org/wiki/ISO_3166-2:US) state code            |
+| postCode             | String   | 15          | Postal code                                                                                                |
+| mrzData              | MRZ-DATA |             | MRZ data, see table below                                                                                  |
+| optionalData1        | String   | 50          | Optional field of MRZ line 1                                                                               |
+| optionalData2        | String   | 50          | Optional field of MRZ line 2                                                                               |
+| placeOfBirth         | String   | 255         | Place of Birth                                                                                             |
 
 ### MRZ-Data
 
-| Parameter |Type | Max. length | Description |
-|:---------------|:------------- |:-------------|:-----------------|
-| format | String |  8| MRP, TD1, TD2, CNIS, MRVA, MRVB or UNKNOWN |
-| line1 | String | 50 | MRZ line 1 |
-| line2 | String | 50 | MRZ line 2 |
-| line3 | String | 50| MRZ line 3 |
-| idNumberValid | BOOL| | True if ID number check digit is valid, otherwise false |
-| dobValid | BOOL | | True if date of birth check digit is valid, otherwise false |
-| expiryDateValid |    BOOL| |    True if date of expiry check digit is valid or not available, otherwise false|
-| personalNumberValid | BOOL | | True if personal number check digit is valid or not available, otherwise false |
-| compositeValid | BOOL | | True if composite check digit is valid, otherwise false |
+| Parameter           | Type   | Max. length | Description                                                                    |
+|:--------------------|:-------|:------------|:-------------------------------------------------------------------------------|
+| format              | String | 8           | MRP, TD1, TD2, CNIS, MRVA, MRVB or UNKNOWN                                     |
+| line1               | String | 50          | MRZ line 1                                                                     |
+| line2               | String | 50          | MRZ line 2                                                                     |
+| line3               | String | 50          | MRZ line 3                                                                     |
+| idNumberValid       | BOOL   |             | True if ID number check digit is valid, otherwise false                        |
+| dobValid            | BOOL   |             | True if date of birth check digit is valid, otherwise false                    |
+| expiryDateValid     | BOOL   |             | True if date of expiry check digit is valid or not available, otherwise false  |
+| personalNumberValid | BOOL   |             | True if personal number check digit is valid or not available, otherwise false |
+| compositeValid      | BOOL   |             | True if composite check digit is valid, otherwise false                        |
 
 ## Local Models for JumioDocfinder
 
@@ -295,6 +305,9 @@ You need to copy those files to the assets folder of your Android project (Path:
 
 ## FAQ
 
+### iOS Simulator shows a white-screen, when the Jumio SDK is started
+The Jumio SDK does not support the iOS Simulator. Please run the Jumio SDK only on physical devices.
+
 ### iOS Runs on Debug, Crashes on Release Build
 This happens due to Xcode 13 introducing a new option to their __App Store Distribution Options__:
 
@@ -311,7 +324,7 @@ Alternatively, it is also possible to set the key `manageAppVersionAndBuildNumbe
 ```
 
 ### App Crash at Launch for iOS
-If iOS application crashes immediately after launch and without additional information, but works fine for Android, please make sure to the following lines have been added to your `podfile`:
+If iOS application crashes immediately after launch and without additional information, but works fine for Android, please make sure the following lines have been added to your `Podfile`:
 
 ```
 post_install do |installer|
@@ -322,6 +335,19 @@ post_install do |installer|
     end
 end
 ```
+
+If you are working with Xcode 15 and above, please make sure the following lines have been added to your `Podfile`:
+
+```
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+end
+```
+
 Please refer to [iOS guide](https://github.com/Jumio/mobile-sdk-ios#via-cocoapods) for more details.
 
 ### iOS Localization

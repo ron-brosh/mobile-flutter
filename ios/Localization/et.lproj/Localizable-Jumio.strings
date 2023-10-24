@@ -1,9 +1,10 @@
 /*
   Localizable-Jumio.strings
-  Copyright © 2021 Jumio Corporation. All rights reserved.
+  Copyright © 2023 Jumio Corporation. All rights reserved.
 */
   
 "IProov_AccessibilityLabelCloseButton" = "Sule";
+"IProov_AccessibilityLabelSecuredByIProov" = "";
 "IProov_AccessibilityPromptAlignFace" = "Hoidke seadet oma näo ees ja vaadake ekraanile";
 "IProov_AccessibilityPromptScanning" = "Skannimine";
 "IProov_Authenticate" = "";
@@ -51,8 +52,6 @@
 "IProov_PromptTooFar" = "Liigutage lähemale";
 "IProov_PromptYawTooHigh" = "Pöörake veidi vasakule";
 "IProov_PromptYawTooLow" = "Pöörake veidi paremale";
-"jumio_accessibility_alert_confirm" = "Sain aru";
-"jumio_accessibility_alert_hint" = "Vihje";
 "jumio_accessibility_button_close" = "Sule";
 "jumio_accessibility_scan_back" = "Tagasi";
 "jumio_accessibility_scan_help" = "Abimenüü";
@@ -130,13 +129,10 @@
 "jumio_id_confirm_button_confirm" = "Kinnitage";
 "jumio_id_confirm_paragraph" = "Veenduge, et kõik andmed oleksid nähtavad ja loetavad";
 "jumio_id_confirm_title" = "Kinnitage oma foto";
-"jumio_id_scan_guide_take_photo_back_dl" = "Tehke foto oma juhiloa TAGAKÜLJEST.";
-"jumio_id_scan_guide_take_photo_back_idc" = "Tehke foto oma ID-kaardi TAGAKÜLJEST.";
-"jumio_id_scan_guide_take_photo_back_pd" = "Tehke foto oma isikutunnistuse TAGAKÜLJEST.";
-"jumio_id_scan_guide_take_photo_front_dl" = "Tehke foto oma juhiloa ESIKÜLJEST.";
-"jumio_id_scan_guide_take_photo_front_idc" = "Tehke foto oma ID-kaardi ESIKÜLJEST.";
-"jumio_id_scan_guide_take_photo_front_pd" = "Tehke foto oma isikutunnistuse ESIKÜLJEST.";
-"jumio_id_scan_guide_take_photo_passport" = "Tehke foto oma passist.";
+"jumio_id_scan_guide_back_side" = "Jäädvusta TAGUMINE pool.";
+"jumio_id_scan_guide_back_side_manually" = "Jäädvusta käsitsi TAGUMINE pool.";
+"jumio_id_scan_guide_photo_side" = "Jäädvusta FOTO pool.";
+"jumio_id_scan_guide_photo_side_manually" = "Jäädvusta käsitsi FOTO pool.";
 "jumio_id_scan_hint_performance_fallback" = "Seadme parema jõudluse saavutamiseks on skannimist optimeeritud";
 "jumio_id_scan_manual" = "Tehke foto oma dokumendist";
 "jumio_id_scan_manual_tips" = "Kontrollige, et kogu dokument oleks pildil nähtav";
@@ -147,14 +143,8 @@
 "jumio_id_scan_prompt_front_captured" = "ESIKÜLG jäädvustatud";
 "jumio_id_scan_prompt_hold_still" = "Olge paigal...";
 "jumio_id_scan_prompt_hold_straight" = "Selg sirgu";
-"jumio_id_scan_prompt_initial_linefinder" = "Raamige oma dokument";
 "jumio_id_scan_prompt_move_closer" = "Liikuge lähemale";
 "jumio_id_scan_prompt_processing" = "Foto kontrollimine...";
-"jumio_id_scan_prompt_redact_deu_id_paper" = "Enne jäädvustamist kustutage isikukood";
-"jumio_id_scan_prompt_redact_deu_id_plastic" = "Enne jäädvustamist kustutage isikukood ja juurdepääsunumber";
-"jumio_id_scan_prompt_redact_deu_passport" = "Enne jäädvustamist kustutage passi number";
-"jumio_id_scan_prompt_redact_kor" = "Enne jäädvustamist kustutage oma elaniku registreerimisnumbri teine osa";
-"jumio_id_scan_prompt_redact_nld" = "Enne jäädvustamist kustutage oma kodaniku identifitseerimisnumber";
 "jumio_id_scan_prompt_too_close" = "Liiga lähedal";
 "jumio_id_scan_prompt_zoom_barcode" = "Suumige oma vöötkoodi sisse";
 "jumio_id_scan_tips_barcode" = "Liigutage kaamera ribakoodile lähemale";
@@ -163,7 +153,6 @@
 "jumio_id_scan_tips_focusing" = "Kontrollige, et foto oleks fookuses";
 "jumio_id_scan_tips_glare" = "Vältige peegeldusi ja helkimisi";
 "jumio_id_scan_tips_lighting" = "Ärge tehke fotot pimedas";
-"jumio_id_scan_tips_passport" = "Liigutage pass raamiga kohakuti";
 "jumio_id_scan_tips_placing" = "Asetage dokument tasasele pinnale";
 "jumio_id_scan_tips_title" = "Näpunäited";
 "jumio_id_scan_tooltip" = "Kas vajate abi?";
@@ -190,6 +179,9 @@
 "jumio_iproov_failure_generic_light" = "Nägu peab olema ühtlaselt valgustatud ja taustast eristuv";
 "jumio_iproov_failure_generic_title" = "Nägu ei tuvastatud";
 "jumio_iproov_intro_la" = "Asetage nägu raami keskele ja järgige ekraanil kuvatud juhiseid.";
+"jumio_liveness_prompt_no_target" = "Asetage oma nägu raami sisse";
+"jumio_liveness_prompt_success_another_shot" = "Sain aru! Teeme veel ühe võtte";
+"jumio_liveness_upfront_intro" = "Peame skannima Sinu näo kinnitamaks, et oled inimene, mitte robot.";
 "jumio_loading_title" = "Laadimine";
 "jumio_nfc_button_skip" = "Vahele jätma";
 "jumio_nfc_description_secure_connection" = "Turvalise ühenduse loomine";
