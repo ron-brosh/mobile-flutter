@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - Jumio/Jumio (4.9.1)
+  - jumio_mobile_sdk_flutter (4.9.0):
+    - Flutter
+    - Jumio/Jumio (~> 4.9.1)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - jumio_mobile_sdk_flutter (from `.symlinks/plugins/jumio_mobile_sdk_flutter/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Jumio
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  jumio_mobile_sdk_flutter:
+    :path: ".symlinks/plugins/jumio_mobile_sdk_flutter/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Jumio: a25b3d22c0715d563879497a78b92191ea3bed6f
+  jumio_mobile_sdk_flutter: a43d0352cd26dbded89d2becafcc5633a3f0a4c8
+
+PODFILE CHECKSUM: 1ffe2c58d8d3cbe1c4cff420663aa500edc6c2d3
+
+COCOAPODS: 1.15.2
