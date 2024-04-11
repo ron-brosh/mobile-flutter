@@ -1,8 +1,10 @@
 PODS:
   - Flutter (1.0.0)
+  - Jumio/DefaultUI (4.9.1)
   - Jumio/Jumio (4.9.1)
   - jumio_mobile_sdk_flutter (4.9.0):
     - Flutter
+    - Jumio/DefaultUI (~> 4.9.1)
     - Jumio/Jumio (~> 4.9.1)
 
 DEPENDENCIES:
@@ -22,7 +24,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   Jumio: a25b3d22c0715d563879497a78b92191ea3bed6f
-  jumio_mobile_sdk_flutter: a43d0352cd26dbded89d2becafcc5633a3f0a4c8
+  jumio_mobile_sdk_flutter: 9eef9fa2c68bdb86a580bf7c2a308868ef50d42f
 
 PODFILE CHECKSUM: 1ffe2c58d8d3cbe1c4cff420663aa500edc6c2d3
 

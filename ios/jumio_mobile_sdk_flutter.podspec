@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'Flutter'
   s.dependency "Jumio/Jumio", "~> 4.9.1"
+  s.dependency "Jumio/DefaultUI", "~> 4.9.1"
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES'}
