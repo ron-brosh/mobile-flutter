@@ -10,7 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
+        classpath 'com.android.tools.build:gradle:8.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -76,7 +76,7 @@ dependencies {
     implementation "com.jumio.android:liveness:${SDK_VERSION}"
 
     //only for the sample code
-    implementation "androidx.activity:activity-ktx:1.9.0"
+    implementation "androidx.activity:activity-ktx:1.8.2"
 
     //Kotlin
     implementation "androidx.multidex:multidex:2.0.1"
