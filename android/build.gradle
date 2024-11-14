@@ -2,7 +2,7 @@ group 'com.jumio.jumiomobilesdk'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.24'
+    ext.kotlin_version = '1.9.10'
     repositories {
         google()
         mavenCentral()
@@ -47,10 +47,6 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
-    }
-
-    kotlinOptions {
-        jvmTarget = "11"
     }
 
     compileOptions {
